@@ -81,7 +81,8 @@ def inference(tf_model_fname, ds_fname, audio_fname, template_fname, condition_i
         # Restore trained model
         saver.restore(session, tf_model_fname)
         predicted_vertices = np.squeeze(session.run(output_decoder, feed_dict))
-        output_sequence_meshes(predicted_vertices, template, out_path)
+        np.save('offset', predicted_vertices)
+        # output_sequence_meshes(predicted_vertices, template, out_path)
 
     tf.reset_default_graph()
 
